@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::resource('/wrestlers' , 'WrestlerController');
+
+Route::get('/home', 'HomeController@index')->name('home');
