@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Wrestler\Wrestler;
+use App\Repositories\Wrestler\WrestlerRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('App\Contracts\WrestlerRepository', function () {
+            return new WrestlerRepository();
+        });
     }
 }
