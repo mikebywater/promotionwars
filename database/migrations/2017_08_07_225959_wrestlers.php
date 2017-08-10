@@ -13,6 +13,7 @@ class Wrestlers extends Migration
      */
     public function up()
     {
+
         Schema::create('wrestlers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
