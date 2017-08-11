@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="/">
-                        <img src="img/banner.jpg" height="40"/>
+                        <img src="/img/banner.jpg" height="40"/>
                     </a>
                 </div>
 
@@ -58,7 +58,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Game World <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">Promotions</a></li>
-                                <li><a href="#">Wrestlers</a></li>
+                                <li><a href="/wrestlers">Wrestlers</a></li>
                             </ul>
                         </li>
 

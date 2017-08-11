@@ -1,5 +1,9 @@
 <p align="center"><img src="http://geocities.ws/promwars/banner.jpg"></p>
 
+[ ![Codeship Status for mikebywater/promotionwars](https://app.codeship.com/projects/cb6bd0c0-6046-0135-6b30-4614bcb67ade/status?branch=master)](https://app.codeship.com/projects/239406) [![StyleCI](https://styleci.io/repos/99633288/shield?branch=master)](https://styleci.io/repos/99633288)  [![Stories in Backlog](https://badge.waffle.io/mikebywater/promotionwars.svg?label=backlog&title=Backlog)](http://waffle.io/mikebywater/promotionwars)  [![Stories in Ready](https://badge.waffle.io/mikebywater/promotionwars.svg?label=ready&title=Ready)](http://waffle.io/mikebywater/promotionwars)  [![Stories In Progress](https://badge.waffle.io/mikebywater/promotionwars.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/mikebywater/promotionwars)
+
+
+
 ## About Promotion Wars Online
 
 Promotion Wars was an excellent wrestling booking simulator written by Adam Jennings in 2000. It is a game that will elicit feelings of nostalgia for many wrestling fans. Promotion Wars Online is intended to be a homage to a wonderful game and a chance to have a bit of fun and hopefully learn something new as we go. 

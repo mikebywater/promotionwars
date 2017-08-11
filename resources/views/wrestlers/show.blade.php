@@ -1,14 +1,28 @@
-<?php
+@extends('layouts.app')
 
-/**
- *
- * Short Description
- *
- * Long Description
- *
- * @author Mike Bywater <mike.bywater@aptsolutions.net>
- * Date: 08/08/2017
- * Time: 00:54
- *
- * @copyright (C)Copyright 2014 APT Solutions Limited
- */
+@section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Profile</div>
+                    <div class="panel-body">
+                        <p>{{$wrestler->name}}</p>
+                        <p>{{$wrestler->draw}}</p>
+                        <p>{{$wrestler->ability}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contract</div>
+                    <div class="panel-body">
+                        <p>{{$wrestler->promotion_id}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@endsection
