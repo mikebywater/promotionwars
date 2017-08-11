@@ -30,7 +30,8 @@ class Wrestlers extends Migration
             $table->string('style');
             $table->string('weight');
             $table->string('role');
-            $table->integer('manager_id');
+            $table->integer('manager_id')->nullable();
+            $table->integer('partner_id')->nullable();
             $table->timestamps();
         });
     }
