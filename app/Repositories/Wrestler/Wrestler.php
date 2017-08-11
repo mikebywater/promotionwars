@@ -12,4 +12,9 @@ class Wrestler extends Model
         parent::boot();
         static::addGlobalScope(new GameScope());
     }
+
+    public function promotion()
+    {
+        return $this->belongsTo('App\Repositories\Promotion\Promotion');
+    }
 }
