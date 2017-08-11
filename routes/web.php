@@ -17,6 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('/wrestlers' , 'WrestlerController');
+Route::resource('/wrestlers', 'WrestlerController');
 
 Route::get('/home', 'HomeController@index')->name('home');

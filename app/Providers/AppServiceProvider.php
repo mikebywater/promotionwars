@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Repositories\Wrestler\Wrestler;
 use App\Repositories\Wrestler\WrestlerRepository;
 use Illuminate\Support\ServiceProvider;
 
