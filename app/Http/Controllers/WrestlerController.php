@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Wrestler\WrestlerRepository;
-use Illuminate\Http\Request;
 
 class WrestlerController extends Controller
 {
@@ -17,6 +16,7 @@ class WrestlerController extends Controller
     public function index()
     {
         $wrestlers = $this->repo->all();
-        return view('wrestlers.index')->with(['wrestlers' => $wrestlers ]);
+
+        return view('wrestlers.index')->with(['wrestlers' => $wrestlers]);
     }
 }
