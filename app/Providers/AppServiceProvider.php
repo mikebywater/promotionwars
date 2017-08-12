@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\Promotion\PromotionRepository;
 use App\Repositories\Wrestler\WrestlerRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('App\Contracts\WrestlerRepository', function () {
             return new WrestlerRepository();
+        });
+
+        $this->app->bind('App\Contracts\PromotionRepository', function () {
+            return new PromotionRepository();
         });
     }
 }
