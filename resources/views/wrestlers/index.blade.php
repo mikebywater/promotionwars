@@ -17,7 +17,7 @@
                             <td><a href="/wrestlers/{{$wrestler->id}}">{{$wrestler->name}}</a></td>
                             <td>{{$wrestler->draw}}</td>
                             <td>{{$wrestler->ability}}</td>
-                            <td>{{$wrestler->promotion_id}}</td>
+                            <td><a href="/promotions/{{$wrestler->promotion->id}}">{{$wrestler->promotion->name}}</a></td>
                         </tr>
                     @endforeach
 

@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::resource('/wrestlers', 'WrestlerController');
 
+Route::resource('/promotions', 'PromotionController');
+
 Route::get('/home', 'HomeController@index')->name('home');

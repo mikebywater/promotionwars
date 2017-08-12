@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class Promotions extends Migration
 {
@@ -11,7 +13,13 @@ class Promotions extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('promotions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('size');
+            $table->integer('rating');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -21,6 +29,6 @@ class Promotions extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('promotions');
     }
 }
