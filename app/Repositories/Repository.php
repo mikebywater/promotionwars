@@ -18,17 +18,17 @@ abstract class Repository
         return $this->model->findOrFail($id);
     }
 
-    public function create(Request $request)
+    public function create($data)
     {
-        $model = $this->model->create($request->all());
+        $model = $this->model->create($data);
 
         return $model;
     }
 
-    public function update($id, Request $request)
+    public function update($id, $data)
     {
         $model = $this->model->findOrFail($id);
-        $model->update($request->all());
+        $model->update($data);
 
         return $model;
     }
