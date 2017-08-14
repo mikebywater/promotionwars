@@ -15,5 +15,4 @@ class ImportService
         $this->wrestlerRepository = $wrestlerRepository;
         $this->promotionRepository = $promotionRepository;
     }
-
 }
