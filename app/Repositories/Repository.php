@@ -2,8 +2,6 @@
 
 namespace App\Repositories;
 
-use Illuminate\Http\Request;
-
 abstract class Repository
 {
     protected $model;

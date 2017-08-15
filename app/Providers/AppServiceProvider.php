@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('App\Services\ImportService', function () {
-            return new ImportService($this->app->make('App\Contracts\WrestlerRepository') , $this->app->make('App\Contracts\PromotionRepository'));
+            return new ImportService($this->app->make('App\Contracts\WrestlerRepository'), $this->app->make('App\Contracts\PromotionRepository'));
         });
     }
 }

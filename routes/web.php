@@ -25,4 +25,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/upload', 'HomeController@upload');
 
-Route::post('/wrestlers/import' , 'ImportController@importWrestlers');
+Route::post('/wrestlers/import', 'ImportController@importWrestlers');

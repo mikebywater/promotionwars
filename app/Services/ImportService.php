@@ -19,7 +19,7 @@ class ImportService
     public function importWrestlers($file)
     {
         $i = 1;
-        $data = array();
+        $data = [];
         foreach (file($file) as $line) {
             switch ($i) {
                 case 1:
@@ -44,7 +44,7 @@ class ImportService
                     $data['style'] = $line;
                     break;
                 case 26:
-                    $data['age'] = 60 - (int)$line;
+                    $data['age'] = 60 - (int) $line;
                     break;
                 case 27:
                     $data['mic_skills'] = $line;
@@ -68,9 +68,8 @@ class ImportService
                     break;
             }
             $i++;
-
         }
+
         return 'done';
     }
-
 }
