@@ -17,6 +17,6 @@ class ImportController extends Controller
     public function importWrestlers(Request $request)
     {
         $this->service->importWrestlers($request->file('file'));
-        return "done";
+        return redirect('home');
     }
 }
