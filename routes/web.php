@@ -23,7 +23,6 @@ Route::resource('/promotions', 'PromotionController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/import' , function () {
-    $service = new \App\Services\ImportService(new \App\Repositories\Wrestler\WrestlerRepository(), new \App\Repositories\Promotion\PromotionRepository());
-    $service->createWrestler('');
-});
+Route::get('/home', 'HomeController@upload');
+
+Route::post('/wrestlers/import' , 'ImportController@importWrestlers');
