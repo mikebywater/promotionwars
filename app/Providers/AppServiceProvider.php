@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Repositories\Promotion\PromotionRepository;
 use App\Repositories\Wrestler\WrestlerRepository;
+use App\Services\ImportService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Contracts\PromotionRepository', function () {
             return new PromotionRepository();
+        });
+
+        $this->app->bind('App\Services\ImportService', function () {
+            return new ImportService($this->app->make('App\Contracts\WrestlerRepository'), $this->app->make('App\Contracts\PromotionRepository'));
         });
     }
 }

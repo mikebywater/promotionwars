@@ -22,3 +22,7 @@ Route::resource('/wrestlers', 'WrestlerController');
 Route::resource('/promotions', 'PromotionController');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/upload', 'HomeController@upload');
+
+Route::post('/wrestlers/import', 'ImportController@importWrestlers');

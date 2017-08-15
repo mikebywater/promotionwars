@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wrestler extends Model
 {
+    protected $guarded = [];
+
     protected static function boot()
     {
         parent::boot();

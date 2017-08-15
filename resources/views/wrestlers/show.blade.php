@@ -66,7 +66,7 @@
         var marksData = {
             labels: ["Draw", "Ability", "Mic Skills", "Charisma", "Hardcore"],
             datasets: [{
-                label: "{{$wrestler->name}}",
+                label: "",
                 backgroundColor: "rgba(800,0,0,0.2)",
                 data: [{{$wrestler->draw}}, {{$wrestler->ability}},{{$wrestler->mic_skills}} ,{{$wrestler->charisma}}, {{$wrestler->hardcore}}]
             }]
