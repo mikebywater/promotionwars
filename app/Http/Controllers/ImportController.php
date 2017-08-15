@@ -11,12 +11,13 @@ class ImportController extends Controller
 
     public function __construct(ImportService $service)
     {
-        $this->service=$service;
+        $this->service = $service;
     }
 
     public function importWrestlers(Request $request)
     {
         $this->service->importWrestlers($request->file('file'));
+
         return redirect('home');
     }
 }
