@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">You search for: {{ $searchTerm }}. {{ count($results) }} result(s) found.</div>
+                    <div class="panel-heading">You searched for: <strong>{{ $searchTerm }}</strong>. {{ count($results) }} result(s) found.</div>
                     <table class="table table-striped panel-primary">
                         <tr>
                             <th>Name</th>
