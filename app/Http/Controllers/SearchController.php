@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\SearchService;
+use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
@@ -16,15 +16,15 @@ class SearchController extends Controller
 
     public function index(Request $request)
     {
-        if (! $request->has('q')) {
+        if (!$request->has('q')) {
             return redirect('/');
         }
 
         $searchTerm = $request->get('q');
 
-        return view('search.index', array(
+        return view('search.index', [
             'searchTerm' => $searchTerm,
-            'results' => $this->service->search($searchTerm)
-        ));
+            'results'    => $this->service->search($searchTerm),
+        ]);
     }
 }
