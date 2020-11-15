@@ -1,0 +1,59 @@
+version: '3.5'
+services:
+
+  # The Application
+  promotionwars-app:
+    container_name: promotionwars-app
+    image: promotionwars-app
+    build:
+      context: ./
+      dockerfile: docker/application/Dockerfile
+    ports:
+      - 9055:9000
+    networks:
+      - promotionwars
+    volumes:
+      - ./:/var/www:cached
+    depends_on:
+      - promotionwars-db
+
+  # The Web Server
+  promotionwars-web:
+    container_name: promotionwars-web
+    image: promotionwars-web
+    build:
+      context: ./
+      dockerfile: docker/web/Dockerfile
+    working_dir: /var/www
+    depends_on:
+      - promotionwars-app
+    networks:
+      - promotionwars
+    volumes:
+      - ./public:/var/www/public:cached
+    ports:
+          - 8055:80
+
+  # The Database
+  promotionwars-db:
+    container_name: promotionwars-db
+    networks:
+      - promotionwars
+    image: mysql:5.7
+    volumes:
+      - promotionwars-db:/var/lib/mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=secret"
+      - "MYSQL_USER=promotionwars"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_DATABASE=promotionwars"
+    ports:
+      - 33055:3306
+
+volumes:
+  promotionwars-db:
+  grafana:
+
+networks:
+   promotionwars:
+     name: promotionwars
