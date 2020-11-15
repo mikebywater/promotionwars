@@ -20,7 +20,7 @@ class Wrestlers extends Migration
             $table->integer('ability');
             $table->integer('charisma');
             $table->integer('mic_skills');
-            $table->integer('condition');
+            $table->string('condition');
             $table->integer('hardcore');
             $table->string('disposition');
             $table->integer('promotion_id')->nullable();
