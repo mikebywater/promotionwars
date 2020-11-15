@@ -1,7 +1,6 @@
 <p align="center"><img src="http://geocities.ws/promwars/banner.jpg"></p>
 
-[ ![Codeship Status for mikebywater/promotionwars](https://app.codeship.com/projects/cb6bd0c0-6046-0135-6b30-4614bcb67ade/status?branch=master)](https://app.codeship.com/projects/239406) [![StyleCI](https://styleci.io/repos/99633288/shield?branch=master)](https://styleci.io/repos/99633288) [![Stories in Ready](https://badge.waffle.io/mikebywater/promotionwars.svg?label=ready&title=Ready)](http://waffle.io/mikebywater/promotionwars)  [![Stories In Progress](https://badge.waffle.io/mikebywater/promotionwars.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/mikebywater/promotionwars)
-
+[ ![Codeship Status for mikebywater/promotionwars](https://app.codeship.com/projects/cb6bd0c0-6046-0135-6b30-4614bcb67ade/status?branch=master)](https://app.codeship.com/projects/239406) [![StyleCI](https://styleci.io/repos/99633288/shield?branch=master)](https://styleci.io/repos/99633288) 
 
 
 ## About Promotion Wars Online
