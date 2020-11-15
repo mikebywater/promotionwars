@@ -16,7 +16,7 @@ class WrestlerController extends Controller
     public function index()
     {
         $wrestlers = $this->repo->all();
-        
+
         return view('wrestlers.index')->with(['wrestlers' => $wrestlers]);
     }
 
