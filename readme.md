@@ -1,6 +1,7 @@
 <p align="center"><img src="http://geocities.ws/promwars/banner.jpg"></p>
 
 [ ![Codeship Status for mikebywater/promotionwars](https://app.codeship.com/projects/cb6bd0c0-6046-0135-6b30-4614bcb67ade/status?branch=master)](https://app.codeship.com/projects/239406) [![StyleCI](https://styleci.io/repos/99633288/shield?branch=master)](https://styleci.io/repos/99633288) 
+[![Maintainability](https://api.codeclimate.com/v1/badges/6e922f4bd46f0db54cb4/maintainability)](https://codeclimate.com/github/mikebywater/promotionwars/maintainability)
 
 
 ## About Promotion Wars Online
