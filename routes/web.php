@@ -17,14 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/wrestlers/upload', 'ImportController@uploadWrestlers');
+
+Route::post('/wrestlers/import', 'ImportController@importWrestlers');
+
 Route::resource('/wrestlers', 'WrestlerController');
 
 Route::resource('/promotions', 'PromotionController');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/upload', 'HomeController@upload');
-
-Route::post('/wrestlers/import', 'ImportController@importWrestlers');
 
 Route::get('/search', 'SearchController@index');

@@ -2,61 +2,28 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Profile</div>
-                    <div class="panel-body">
-                        <div class="col-md-6">
-                            <p>Name</p>
-                            <p>Age</p>
-                            <p>Weight</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="text-right">{{$wrestler->name}}</p>
-                            <p class="text-right">{{$wrestler->age}}</p>
-                            <p class="text-right">{{$wrestler->weight}}weight</p>
-                        </div>
-                    </div>
+        <div class="col-md-7 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-6">
+                    @include('wrestlers.partials.profile')
+                </div>
+                <div class="col-md-6">
+                    @include('wrestlers.partials.contract')
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Contract</div>
-                    <div class="panel-body">
-                        <div class="col-md-6 hidden-sm-down">
-                            <p>Promotion</p>
-                            <p>Salary (p/m)</p>
-                            <p>Expires</p>
-                        </div>
-                        <div class="col-md-6 hidden-sm-down">
-                            @if($wrestler->promotion)
-                                <p class="text-right">{{$wrestler->promotion->name}}</p>
-                            @else
-                                <p>n/a</p>
-                            @endif
-                            <p class="text-right">$20,000</p>
-                            <p class="text-right">10/10/2019</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Skills</div>
-                    <div class="panel-body">
-                        <canvas id="myRadarChart" width="100" height="100"></canvas>
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @include('wrestlers.partials.biography')
                 </div>
             </div>
         </div>
+        <div class="col-md-3">
+            <div class="col-md-12">
+                @include('wrestlers.partials.stats')
+            </div>
+        </div>
+
     </div>
-
-
-
-
-
 @endsection
 
 @section('scripts')

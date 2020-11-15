@@ -26,4 +26,9 @@ class PromotionController extends Controller
 
         return view('promotions.show')->with(['promotion' => $promotion]);
     }
+
+    public function upload()
+    {
+        return view('promotions.upload');
+    }
 }
