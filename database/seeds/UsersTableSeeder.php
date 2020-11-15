@@ -12,8 +12,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Demo User',
-            'email' => 'demo@demo.com',
+            'name'     => 'Demo User',
+            'email'    => 'demo@demo.com',
             'password' => Hash::make('secret'),
         ]);
     }
