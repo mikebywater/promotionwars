@@ -14,10 +14,15 @@ class ImportController extends Controller
         $this->service = $service;
     }
 
+    public function uploadWrestlers()
+    {
+        return view('wrestlers.upload');
+    }
+
     public function importWrestlers(Request $request)
     {
         $this->service->importWrestlers($request->file('file'));
 
-        return redirect('home');
+        return redirect('wrestlers');
     }
 }

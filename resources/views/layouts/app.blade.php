@@ -39,31 +39,8 @@
                 <ul class="nav navbar-nav">
 
                     <li><a href="#">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">WWE
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Championships</a></li>
-                            <li><a href="#">Feuds</a></li>
-                            <li><a href="#">Tag Teams / Stables</a></li>
-                            <li><a href="#">Training Camp</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Roster</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Shows</a></li>
-                        </ul>
-                    </li>
-
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Game
-                            World <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="/promotions">Promotions</a></li>
-                            <li><a href="/wrestlers">Wrestlers</a></li>
-                        </ul>
-                    </li>
-
+                    <li><a href="/promotions">Promotions</a></li>
+                    <li><a href="/wrestlers">Wrestlers</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
