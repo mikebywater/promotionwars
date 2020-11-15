@@ -19,11 +19,6 @@ RUN apt-get install -y curl
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-# Kafka
-RUN apt-get install -y librdkafka-dev
-RUN pecl install rdkafka && docker-php-ext-enable rdkafka
-RUN apt-get install -y kafkacat
-
 # Supervisor
 RUN apt-get install -y supervisor
 #ADD docker/application/config/supervisor/supervisord.conf /etc/supervisord.conf
