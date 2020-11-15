@@ -11,4 +11,9 @@ class WrestlerRepository extends Repository implements WrestlerRepositoryContrac
     {
         $this->model = new Wrestler();
     }
+
+    public function search($searchTerm)
+    {
+        return $this->model->where('name', 'like', '%' . $searchTerm . '%')->get();
+    }
 }

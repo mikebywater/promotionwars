@@ -1,6 +1,0 @@
-2020-11-15 10:57:58,408 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
-2020-11-15 10:57:58,410 WARN No file matches via include "/var/www/storage/app/supervisor/consumers.conf"
-2020-11-15 10:57:58,429 INFO RPC interface 'supervisor' initialized
-2020-11-15 10:57:58,434 INFO supervisord started with pid 1
-2020-11-15 10:57:59,437 INFO spawned: 'php' with pid 8
-2020-11-15 10:58:00,645 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
