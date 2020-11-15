@@ -4,3 +4,10 @@
 2020-11-15 10:57:58,434 INFO supervisord started with pid 1
 2020-11-15 10:57:59,437 INFO spawned: 'php' with pid 8
 2020-11-15 10:58:00,645 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-11-15 15:39:32,075 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-11-15 15:39:32,076 WARN No file matches via include "/var/www/storage/app/supervisor/consumers.conf"
+2020-11-15 15:39:32,087 INFO RPC interface 'supervisor' initialized
+2020-11-15 15:39:32,091 INFO supervisord started with pid 1
+2020-11-15 15:39:33,094 INFO spawned: 'php' with pid 8
+2020-11-15 15:39:34,161 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-11-15 15:40:39,439 INFO reaped unknown pid 427

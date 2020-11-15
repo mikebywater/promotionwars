@@ -66,9 +66,6 @@
 
                 </ul>
 
-                &nbsp;
-                </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
@@ -102,6 +99,13 @@
                         </li>
                     @endif
                 </ul>
+
+                <form class="navbar-form navbar-right" id="search-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search for a wrestler" id="search-bar">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -111,6 +115,36 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $("#search-form").submit(function(event) {
+            event.preventDefault();
+
+            var searchTerm = $("#search-bar").val();
+
+            if (searchTerm.length < 2) {
+                return false;
+            }
+
+            window.location.href = "/search?q="+ searchTerm;
+        });
+
+        $("#search-bar").keypress(function(event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+
+            if (keycode == '13') {
+                event.preventDefault();
+                var searchTerm = $(this).val();
+
+                if (searchTerm.length < 2) {
+                    return false;
+                }
+
+                window.location.href = "/search?q="+ searchTerm;	
+            }
+        });
+    });
+</script>
 @yield('scripts')
 </body>
 </html>
