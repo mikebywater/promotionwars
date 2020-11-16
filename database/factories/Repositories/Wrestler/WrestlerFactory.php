@@ -1,20 +1,29 @@
 <?php
 
-use App\Repositories\Promotion\Promotion;
-use App\Repositories\Wrestler\Wrestler;
-use Illuminate\Database\Seeder;
+namespace Database\Factories\Repositories\Wrestler;
 
-class WrestlersTableSeeder extends Seeder
+use App\Repositories\Wrestler\Wrestler as Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
+class WrestlerFactory extends Factory
 {
     /**
-     * Run the database seeds.
+     * The name of the factory's corresponding model.
      *
-     * @return void
+     * @var string
      */
-    public function run()
+    protected $model = Model::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
     {
-        Wrestler::create([
-            'name'         => 'Sabu',
+        return [
+            'name'         => $this->faker->name,
             'draw'         => 70,
             'ability'      => 80,
             'charisma'     => 82,
@@ -29,12 +38,6 @@ class WrestlersTableSeeder extends Seeder
             'style'        => 'Technical',
             'weight'       => 'Light',
             'role'         => 'Midcard',
-        ]);
-
-        Promotion::create([
-            'name'   => 'ECW',
-            'size'   => 10,
-            'rating' => 90,
-        ]);
+        ];
     }
 }
