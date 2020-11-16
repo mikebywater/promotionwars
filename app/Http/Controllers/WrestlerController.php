@@ -16,14 +16,12 @@ class WrestlerController extends Controller
     public function index()
     {
         $wrestlers = $this->repo->all();
-
         return view('wrestlers.index')->with(['wrestlers' => $wrestlers]);
     }
 
     public function show($id)
     {
         $wrestler = $this->repo->find($id);
-
         return view('wrestlers.show')->with(['wrestler' => $wrestler]);
     }
 }

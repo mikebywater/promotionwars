@@ -12,6 +12,28 @@ Promotion Wars was an excellent wrestling booking simulator written by Adam Jenn
 
 Thank you for considering contributing to the project, for now please raise some issues for any features that you would like to request, the initial scope will be to create something close to the original Promotion Wars with a multiplayer element, all ideas are welcome.
 
+## Development
+
+```
+cp .env.example .env
+docker-compose up -d
+docker-compose exec promotionwars-app php artisan key:generate
+docker-compose exec promotionwars-app composer install
+docker-compose exec promotionwars-app php artisan migrate
+```
+
+## Testing
+
+```
+php artisan test
+```
+
+## Issues
+
+```
+docker-compose exec promotionwars-app php artisan config:cache
+```
+
 ## License
 
 The Promotion Wars Online Project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

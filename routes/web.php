@@ -17,18 +17,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/wrestlers/upload', 'ImportController@uploadWrestlers');
+Route::middleware(['auth'])->group(function() {
+    Route::get('/wrestlers/upload', 'ImportController@uploadWrestlers');
 
-Route::post('/wrestlers/import', 'ImportController@importWrestlers');
+    Route::post('/wrestlers/import', 'ImportController@importWrestlers');
 
-Route::get('/promotions/upload', 'ImportController@uploadPromotions');
+    Route::get('/promotions/upload', 'ImportController@uploadPromotions');
 
-Route::post('/promotions/import', 'ImportController@importPromotions');
+    Route::post('/promotions/import', 'ImportController@importPromotions');
 
-Route::resource('/wrestlers', 'WrestlerController');
+    Route::resource('/wrestlers', 'WrestlerController');
 
-Route::resource('/promotions', 'PromotionController');
+    Route::resource('/promotions', 'PromotionController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/search', 'SearchController@index');
+    Route::get('/search', 'SearchController@index');
+});

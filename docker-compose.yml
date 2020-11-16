@@ -14,11 +14,6 @@ services:
       - promotionwars
     volumes:
       - ./:/var/www:cached
-    environment:
-      - "DB_HOST=promotionwars-db"
-      - "DB_DATABASE=promotionwars"
-      - "DB_USERNAME=promotionwars"
-      - "DB_PASSWORD=secret"
     depends_on:
       - promotionwars-db
 
