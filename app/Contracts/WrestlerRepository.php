@@ -10,5 +10,3 @@ interface WrestlerRepository
 
     public function search($searchTerm);
 }
-
-

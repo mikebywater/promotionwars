@@ -20,7 +20,7 @@ class Promotions extends Migration
             $table->text('bio')->nullable();
             $table->integer('size');
             $table->float('popularity');
-            $table->float('funds' , '20', '2');
+            $table->float('funds', '20', '2');
             $table->string('website')->nullable();
             $table->timestamps();
         });
