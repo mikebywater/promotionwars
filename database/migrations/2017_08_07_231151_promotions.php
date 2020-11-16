@@ -16,8 +16,12 @@ class Promotions extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('short_name');
+            $table->text('bio')->nullable();
             $table->integer('size');
-            $table->integer('rating');
+            $table->float('popularity');
+            $table->float('funds', '20', '2');
+            $table->string('website')->nullable();
             $table->timestamps();
         });
     }
