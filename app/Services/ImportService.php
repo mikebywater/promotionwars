@@ -16,11 +16,53 @@ class ImportService
         $this->promotionRepository = $promotionRepository;
     }
 
+    public function importPromotions($file)
+    {
+        $i = 1;
+        $data = [];
+        foreach (file($file) as $line) {
+            $line = trim($line);
+            switch ($i) {
+                case 1:
+                    $data['short_name'] = $line;
+                    break;
+                case 2:
+                    $data['name'] = $line;
+                    break;
+                case 4:
+                    $data['size'] = $line;
+                    break;
+                case 5:
+                    $data['funds'] = $line;
+                    break;
+                case 6:
+                    $data['website'] = $line;
+                    break;
+                case 7:
+                    $data['bio'] = htmlentities($line);
+                    break;
+                case 46:
+                    $data['popularity'] = $line;
+                    break;
+                case 238:
+                    $i = 0;
+          //          $data['promotion_id'] = 1;
+          //          $data['game_id'] = 1;
+                    $this->promotionRepository->create($data);
+                    $data = [];
+                    break;
+            }
+            $i++;
+        }
+
+    }
+
     public function importWrestlers($file)
     {
         $i = 1;
         $data = [];
         foreach (file($file) as $line) {
+            $line = trim($line);
             switch ($i) {
                 case 1:
                     $data['name'] = $line;
