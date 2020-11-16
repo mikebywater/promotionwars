@@ -21,6 +21,10 @@ Route::get('/wrestlers/upload', 'ImportController@uploadWrestlers');
 
 Route::post('/wrestlers/import', 'ImportController@importWrestlers');
 
+Route::get('/promotions/upload', 'ImportController@uploadPromotions');
+
+Route::post('/promotions/import', 'ImportController@importPromotions');
+
 Route::resource('/wrestlers', 'WrestlerController');
 
 Route::resource('/promotions', 'PromotionController');

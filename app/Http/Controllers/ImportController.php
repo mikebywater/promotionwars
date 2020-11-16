@@ -25,4 +25,16 @@ class ImportController extends Controller
 
         return redirect('wrestlers');
     }
+
+    public function uploadPromotions()
+    {
+        return view('promotions.upload');
+    }
+
+    public function importPromotions(Request $request)
+    {
+        $this->service->importPromotions($request->file('file'));
+
+        return redirect('promotions');
+    }
 }
