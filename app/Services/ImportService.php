@@ -54,7 +54,6 @@ class ImportService
             }
             $i++;
         }
-
     }
 
     public function importWrestlers($file)
