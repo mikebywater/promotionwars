@@ -30,7 +30,6 @@ class HomeController extends Controller
 
     public function update($request, $id)
     {
-        dd($id);
-        $this->game->
+
     }
 }
