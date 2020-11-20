@@ -38,7 +38,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
 
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     <li><a href="/promotions">Promotions</a></li>
                     <li><a href="/wrestlers">Wrestlers</a></li>
                 </ul>

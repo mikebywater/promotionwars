@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::resource('/promotions', 'PromotionController');
 
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('/home', 'HomeController');
 
     Route::get('/search', 'SearchController@index');
 });

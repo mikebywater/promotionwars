@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -11,6 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->game = Auth::user()->game;
         $this->middleware('auth');
     }
 
@@ -21,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        return view('home')->with(['game' => $this->game]);
+    }
+
+    public function update($request, $id)
+    {
+        dd($id);
+        $this->game->
     }
 }

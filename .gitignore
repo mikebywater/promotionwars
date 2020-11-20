@@ -12,4 +12,5 @@ yarn-error.log
 .env
 .vscode
 supervisord.log
+supervisord.pid
 .phpunit.result.cache
