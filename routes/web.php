@@ -11,26 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
-    Route::get('/wrestlers/upload', 'ImportController@uploadWrestlers');
 
-    Route::post('/wrestlers/import', 'ImportController@importWrestlers');
+    Route::get('/', 'GameController@index');
+    Route::get('/games/load', 'GameController@load');
+    Route::resource('/games', 'GameController');
 
-    Route::get('/promotions/upload', 'ImportController@uploadPromotions');
+    Route::middleware(['game.loaded'])->group(function() {
+        Route::get('/wrestlers/upload', 'ImportController@uploadWrestlers');
 
-    Route::post('/promotions/import', 'ImportController@importPromotions');
+        Route::post('/wrestlers/import', 'ImportController@importWrestlers');
 
-    Route::resource('/wrestlers', 'WrestlerController');
+        Route::get('/promotions/upload', 'ImportController@uploadPromotions');
 
-    Route::resource('/promotions', 'PromotionController');
+        Route::post('/promotions/import', 'ImportController@importPromotions');
 
-    Route::get('/home', 'HomeController@index')->name('home');
+        Route::resource('/wrestlers', 'WrestlerController');
 
-    Route::get('/search', 'SearchController@index');
+        Route::resource('/promotions', 'PromotionController');
+
+        Route::get('/home', 'HomeController@index')->name('home');
+
+        Route::get('/search', 'SearchController@index');
+    });
 });

@@ -21,6 +21,7 @@ class HomeControllerTest extends TestCase
     public function testWithAccess()
     {
         $user = User::factory()->create();
+        $this->loadGame($user);
 
         $response = $this->actingAs($user)
                         ->get('/home');

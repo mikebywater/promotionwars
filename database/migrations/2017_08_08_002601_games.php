@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class Games extends Migration
 {
@@ -11,7 +13,13 @@ class Games extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('games', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('promotion_id');
+            $table->string('promoter_name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -21,6 +29,6 @@ class Games extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('games');
     }
 }

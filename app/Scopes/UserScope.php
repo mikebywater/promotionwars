@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class GameScope implements Scope
+class UserScope implements Scope
 {
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('game_id', Session::get('game_id'));
+        $builder->where('user_id', Auth::user()->id);
     }
 }
