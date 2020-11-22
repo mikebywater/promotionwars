@@ -5,3 +5,4 @@ supervisord.*
 storage/
 bootstrap/
 .idea/
+node_modules/
