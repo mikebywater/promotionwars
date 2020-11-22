@@ -27,9 +27,4 @@ class HomeController extends Controller
         $game = Auth::user()->game;
         return view('home')->with(['game' => $game]);
     }
-
-    public function update()
-    {
-
-    }
 }
