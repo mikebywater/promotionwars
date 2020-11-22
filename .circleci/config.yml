@@ -52,6 +52,11 @@ jobs:
       - run: touch storage/testing.sqlite
       - run: php artisan migrate --env=testing --database=sqlite_testing --force
 
+      # clear caches
+
+      - run: php artisan config:cache
+      - run: php artisan config:clear
+
       # run tests with phpunit or codecept
       - run: ./vendor/bin/phpunit
       #- run: ./vendor/bin/codecept build
