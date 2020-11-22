@@ -11,6 +11,5 @@ npm-debug.log
 yarn-error.log
 .env
 .vscode
-supervisord.log
-supervisord.pid
+supervisord.*
 .phpunit.result.cache
