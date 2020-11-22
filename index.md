@@ -13,7 +13,8 @@ We are going to try and keep an actively updated roadmap as well as mainatianing
 
 ![Roadmap](images/Roadmap.png)
 
-You can track the milestones in the github project and submit issues to report bugs or suggest features.
+You can track the milestones in the [Github project](https://github.com/mikebywater/promotionwars/projects/2) and submit issues to report bugs or suggest features.
+
 
 ## Development Blog
 
