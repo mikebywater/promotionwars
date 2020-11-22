@@ -1,0 +1,7 @@
+vendor/
+supervisord.*
+.env
+.phpunit*
+storage/
+bootstrap/
+.idea/

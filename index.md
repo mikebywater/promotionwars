@@ -1,37 +1,22 @@
-![Promotion Wars Logo](/banner.jpg)
+![Promotion Wars Logo](/images/banner.jpg)
 
-[Website](http://promotionwars.online) to maintain and preview the content for your website in Markdown files.
+# About the Project
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Promotion Wars was an excellent wrestling booking simulator written by Adam Jennings in 2000. It is a game that will elicit feelings of nostalgia for many wrestling fans. Promotion Wars Online is intended to be a homage to a wonderful game and a chance to have a bit of fun and hopefully learn something new as we go.
 
-### Markdown
+You can play the current release of the game at [Promotion Wars Online](http://promotionwars.online) 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+# Roadmap
 
-# Header 1
-## Header 2
-### Header 3
+We are going to try and keep an actively updated roadmap as well as mainatianing a publicly available project and issue tracker on github. Below is the high level roadmap.
 
-- Bulleted
-- List
+![Roadmap](/images/Roadmap.png)
 
-1. Numbered
-2. List
+You can track the milestones in the github project and submit issues to report bugs or suggest features.
 
-**Bold** and _Italic_ and `Code` text
+# Development Blog
 
-[Link](url) and ![Image](src)
-```
+We would like to keep an active blog of the development to keep everyone up to date with progress 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mikebywater/promotionwars/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+[ Dev Blog](/blog) 
