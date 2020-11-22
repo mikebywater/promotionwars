@@ -9,7 +9,7 @@ You can play the current release of the game at [Promotion Wars Online](http://p
 
 ## Roadmap
 
-We are going to try and keep an actively updated roadmap as well as mainatianing a publicly available project and issue tracker on github. Below is the high level roadmap.
+We are going to try and keep an actively updated roadmap as well as maintaining a publicly available project and issue tracker on github. Below is the high level roadmap.
 
 ![Roadmap](images/Roadmap.png)
 
