@@ -17,6 +17,7 @@ class SearchControllerTest extends TestCase
     public function testNoSearchTermProvided()
     {
         $user = User::factory()->create();
+        $this->loadGame($user);
 
         $response = $this->actingAs($user)
                          ->get('/search');
@@ -36,6 +37,7 @@ class SearchControllerTest extends TestCase
     public function testSearchNoResults()
     {
         $user = User::factory()->create();
+        $this->loadGame($user);
 
         $response = $this->actingAs($user)
                          ->get('/search?q=name');
@@ -53,6 +55,8 @@ class SearchControllerTest extends TestCase
     public function testResults()
     {
         $user = User::factory()->create();
+        $this->loadGame($user);
+
         $wrestler = Wrestler::factory()->create([
             'name' => 'The Undertaker',
             'game_id' => $user->id
@@ -74,9 +78,11 @@ class SearchControllerTest extends TestCase
     public function testNoResultsForUser()
     {
         $user = User::factory()->create();
+        $gameId = $this->loadGame($user);
+
         $wrestler = Wrestler::factory()->create([
             'name' => 'The Undertaker',
-            'game_id' => $user->id ++
+            'game_id' => $gameId + 1
         ]);
 
         $response = $this->actingAs($user)

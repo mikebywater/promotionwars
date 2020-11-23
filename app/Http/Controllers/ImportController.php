@@ -21,7 +21,9 @@ class ImportController extends Controller
 
     public function importWrestlers(Request $request)
     {
-        $this->service->importWrestlers($request->file('file'));
+        if ($request->hasFile('file')) {
+            $this->service->importWrestlers($request->file('file'));
+        }
 
         return redirect('wrestlers');
     }
@@ -33,8 +35,10 @@ class ImportController extends Controller
 
     public function importPromotions(Request $request)
     {
-        $this->service->importPromotions($request->file('file'));
-
+        if ($request->hasFile('file')) {
+            $this->service->importPromotions($request->file('file'));
+        }
+        
         return redirect('promotions');
     }
 }
