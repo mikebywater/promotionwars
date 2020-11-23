@@ -10,11 +10,11 @@
                 <div class="panel-body">
                     @if($game)
                         {{$game->carbon_date->format('d/m/Y')}}
-                        <form method="POST">
+                        <form method="POST" action="/games/{{Auth::user()->game_id}}">
                             @method('put')
                             @csrf
                             <input name= "game_date" type="hidden" value="{{$game->carbon_date->addDay()}}">
-                            <button class="btn btn-primary" href="/games/create">Next Day</button>
+                            <button class="btn btn-primary">Next Day</button>
                         </form>
 
                     @else
