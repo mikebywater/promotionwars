@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $game = Auth::user()->game;
+        $game = Game::find(session('game_id'));
         return view('home')->with(['game' => $game]);
     }
 }

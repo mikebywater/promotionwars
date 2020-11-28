@@ -19,6 +19,7 @@ class Promotions extends Migration
             $table->string('short_name');
             $table->text('bio')->nullable();
             $table->integer('size');
+            $table->uuid('game_id');
             $table->float('popularity');
             $table->float('funds', '20', '2');
             $table->string('website')->nullable();

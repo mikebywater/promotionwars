@@ -14,11 +14,11 @@ class Games extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id')->primary();
             $table->integer('user_id');
-            $table->integer('promotion_id');
+            $table->integer('promotion_id')->nullable();
             $table->string('promoter_name');
-            $table->datetime('game_date');
+            $table->datetime('game_date')->default(now());
             $table->bigInteger('score')->nullable();
             $table->timestamps();
         });

@@ -19,7 +19,6 @@ abstract class Repository
     public function create($data)
     {
         $model = $this->model->create($data);
-
         return $model;
     }
 

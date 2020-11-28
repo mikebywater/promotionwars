@@ -86,7 +86,6 @@
             </div>
         </div>
     </nav>
-    <strong>Current Game: {{ \App\Repositories\Game\Game::find(session('game_id')) }} </strong>
     @yield('content')
 </div>
 
