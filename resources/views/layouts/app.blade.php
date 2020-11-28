@@ -38,7 +38,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
 
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     <li><a href="/promotions">Promotions</a></li>
                     <li><a href="/wrestlers">Wrestlers</a></li>
                 </ul>
@@ -60,6 +60,18 @@
                                 <li><a href="#">Feedback</a></li>
                                 <li><a href="#">Inbox</a></li>
                                 <li class="divider"></li>
+                                <li>
+                                    <a href="/games/exit"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('exit-form').submit();">
+                                        Exit Game
+                                    </a>
+
+                                    <form id="exit-form" action="/games/exit" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -86,7 +98,6 @@
             </div>
         </div>
     </nav>
-
     @yield('content')
 </div>
 

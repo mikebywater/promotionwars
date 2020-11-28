@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Contracts\WrestlerRepository;
+use App\Repositories\User\User;
 
 class SearchService
 {

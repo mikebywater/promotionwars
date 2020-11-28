@@ -24,7 +24,7 @@ class Wrestlers extends Migration
             $table->integer('hardcore');
             $table->string('disposition');
             $table->integer('promotion_id')->nullable();
-            $table->integer('game_id');
+            $table->uuid('game_id');
             $table->integer('age');
             $table->text('bio');
             $table->string('style');

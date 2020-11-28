@@ -16,7 +16,7 @@ class ImportService
         $this->promotionRepository = $promotionRepository;
     }
 
-    public function importPromotions($file)
+    public function importPromotions($file, $id)
     {
         $i = 1;
         $data = [];
@@ -47,7 +47,7 @@ class ImportService
                 case 238:
                     $i = 0;
           //          $data['promotion_id'] = 1;
-          //          $data['game_id'] = 1;
+                    $data['game_id'] = $id;
                     $this->promotionRepository->create($data);
                     $data = [];
                     break;
@@ -56,7 +56,7 @@ class ImportService
         }
     }
 
-    public function importWrestlers($file)
+    public function importWrestlers($file, $id)
     {
         $i = 1;
         $data = [];
@@ -102,7 +102,7 @@ class ImportService
                 case 31:
                     $i = 0;
                     $data['promotion_id'] = 1;
-                    $data['game_id'] = 1;
+                    $data['game_id'] = $id;
                     $data['role'] = 'Midcard';
                     $this->wrestlerRepository->create($data);
                     $data = [];
