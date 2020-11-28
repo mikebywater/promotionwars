@@ -3,6 +3,7 @@
 namespace Tests\Unit\Controllers;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 use App\Repositories\User\User;
 use App\Repositories\Wrestler\Wrestler;
@@ -55,11 +56,11 @@ class SearchControllerTest extends TestCase
     public function testResults()
     {
         $user = User::factory()->create();
-        $this->loadGame($user);
+        $id = $this->loadGame($user);
 
         $wrestler = Wrestler::factory()->create([
             'name' => 'The Undertaker',
-            'game_id' => $user->id
+            'game_id' => $id
         ]);
 
         $response = $this->actingAs($user)
@@ -82,7 +83,7 @@ class SearchControllerTest extends TestCase
 
         $wrestler = Wrestler::factory()->create([
             'name' => 'The Undertaker',
-            'game_id' => $gameId + 1
+            'game_id' => Str::uuid()
         ]);
 
         $response = $this->actingAs($user)
