@@ -21,7 +21,6 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/games/exit', 'GameController@exit');
 
     Route::middleware(['game.loaded'])->group(function() {
-        Route::get('/wrestlers/upload', 'ImportController@uploadWrestlers');
 
         Route::resource('/wrestlers', 'WrestlerController');
 
