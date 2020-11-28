@@ -18,5 +18,10 @@ class UsersTableSeeder extends Seeder
             'email'    => 'demo@demo.com',
             'password' => \Hash::make('secret'),
         ]);
+        \DB::table('users')->insert([
+            'name'     => 'Mike Bywater',
+            'email'    => 'mike.j.bywater@gmail.com',
+            'password' => \Hash::make('secret'),
+        ]);
     }
 }

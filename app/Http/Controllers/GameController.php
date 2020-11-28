@@ -40,7 +40,7 @@ class GameController extends Controller
             return redirect('/home');
         }
 
-        return view('welcome');
+        return view('welcome')->with(['games' => Game::all()]);
     }
 
     /**
@@ -78,6 +78,13 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+
+        if($request->has('game_id')){
+            session(['game_id' => $request->game_id]);
+            return redirect('/home');
+        }
+
+
         $id = Str::uuid();
 
         if ($request->hasFile('promotions-file')) {
@@ -112,6 +119,12 @@ class GameController extends Controller
     public function load()
     {
         return view('games.load')->with(['games' => $this->repository->all()]);
+    }
+
+    public function exit()
+    {
+        session(['game_id' => '']);
+        return redirect('/');
     }
 
     /**

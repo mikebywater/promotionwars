@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="container">
+
+    <div class="row">
+        <div class="span4"></div>
+        <div class="span4"><img class="center-block" style="margin-top:200px; margin-bottom:50px" src="img/banner.jpg" /></div>
+        <br>
+        <div class="span4"></div>
+    </div>
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

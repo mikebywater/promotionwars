@@ -15,10 +15,13 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
 
+    Route::get('/', 'GameController@index');
+    Route::get('/games/load', 'GameController@load');
+    Route::resource('/games', 'GameController');
+    Route::post('/games/exit', 'GameController@exit');
 
     Route::middleware(['game.loaded'])->group(function() {
-
-        Route::resource('/games', 'GameController');
+        Route::get('/wrestlers/upload', 'ImportController@uploadWrestlers');
 
         Route::resource('/wrestlers', 'WrestlerController');
 

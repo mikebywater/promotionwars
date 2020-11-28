@@ -61,6 +61,18 @@
                                 <li><a href="#">Inbox</a></li>
                                 <li class="divider"></li>
                                 <li>
+                                    <a href="/games/exit"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('exit-form').submit();">
+                                        Exit Game
+                                    </a>
+
+                                    <form id="exit-form" action="/games/exit" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                                <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

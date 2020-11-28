@@ -9,6 +9,9 @@ use App\Scopes\UserScope;
 class Game extends Model
 {
     protected $guarded = [];
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected static function boot()
     {
