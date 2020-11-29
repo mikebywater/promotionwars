@@ -81,6 +81,8 @@ class GameController extends Controller
 
         if($request->has('game_id')){
             session(['game_id' => $request->game_id]);
+            $game = Game::find($request->game_id);
+            session(['game' => $game]);
             return redirect('/home');
         }
 
@@ -99,9 +101,10 @@ class GameController extends Controller
         $request->request->set('id', $id);
 
 
-        $this->repository->create( $request->except(['promotions-file' , 'wrestlers-file']));
+        $game = $this->repository->create( $request->except(['promotions-file' , 'wrestlers-file']));
 
         session(['game_id' => $id]);
+        session(['game' => $game]);
         return redirect('/home');
     }
 
@@ -124,6 +127,7 @@ class GameController extends Controller
     public function exit()
     {
         session(['game_id' => '']);
+        session(['game' => '']);
         return redirect('/');
     }
 
