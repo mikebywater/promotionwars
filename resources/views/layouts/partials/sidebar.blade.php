@@ -11,7 +11,7 @@
     <!-- Sidebar Navidation Menus--><span class="heading">My Promotion</span>
     <ul class="list-unstyled">
 
-        <li><a href="/roster"> <i class="icon-home"></i>Home</a></li>
+        <li><a href="/home"> <i class="icon-home"></i>Home</a></li>
         <li><a href="/roster"> <i class="icon-grid"></i>Roster</a></li>
         <li><a href="#kayfabeDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Kayfabe</a>
             <ul id="kayfabeDropdown" class="collapse list-unstyled ">
