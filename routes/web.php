@@ -22,6 +22,8 @@ Route::middleware(['auth'])->group(function() {
 
     Route::middleware(['game.loaded'])->group(function() {
 
+        Route::get('/roster', 'WrestlerController@roster')->name('roster');
+
         Route::resource('/wrestlers', 'WrestlerController');
 
         Route::resource('/promotions', 'PromotionController');

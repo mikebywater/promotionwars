@@ -16,4 +16,9 @@ class WrestlerRepository extends Repository implements WrestlerRepositoryContrac
     {
         return $this->model->where('name', 'like', '%' . $searchTerm . '%')->get();
     }
+
+    public function roster()
+    {
+        return $this->model->where('promotion_id', session('game')->promotion->id)->orderBy('draw', 'desc')->get();
+    }
 }
