@@ -5,24 +5,24 @@
             <div class="avatar"><img src="img/avatar.jpg" alt="..." class="img-fluid rounded-circle"></div></a>
         <div class="title">
             <h1 class="h5">{{session('game')->promoter_name}}</h1>
-            <p>{{session('promotion') ? session('promotion')->name : 'Unemployed'}} </p>
+            <p>{{session('promotion') ? session('promotion')->short_name : 'Unemployed'}} </p>
         </div>
     </div>
     <!-- Sidebar Navidation Menus--><span class="heading">My Promotion</span>
     <ul class="list-unstyled">
 
-        <li class="active"><a href="index.html"> <i class="icon-grid"></i>Roster </a></li>
-        <li><a href="index.html"> <i class="icon-home"></i>Feuds</a></li>
-        <li><a href="index.html"> <i class="icon-home"></i>Championships</a></li>
-        <li><a href="index.html"> <i class="icon-home"></i>Shows</a></li>
-        <li><a href="index.html"> <i class="icon-home"></i>Feedback</a></li>
-        <li><a href="index.html"> <i class="icon-home"></i>Training Camp</a></li>
-        <li><a href="index.html"> <i class="icon-home"></i>Tag Teams / Stables</a></li>
+        <li class="active"><a href="/roster"> <i class="icon-grid"></i>Roster </a></li>
+        <li><a href="/feuds"> <i class="icon-home"></i>Feuds</a></li>
+        <li><a href="/championships"> <i class="icon-home"></i>Championships</a></li>
+        <li><a href="/shows"> <i class="icon-home"></i>Shows</a></li>
+        <li><a href="/feedback"> <i class="icon-home"></i>Feedback</a></li>
+        <li><a href="/camp"> <i class="icon-home"></i>Training Camp</a></li>
+        <li><a href="/stables"> <i class="icon-home"></i>Tag Teams / Stables</a></li>
 
         <li><a href="#financesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Finances</a>
             <ul id="financesDropdown" class="collapse list-unstyled ">
-                <li><a href="charts.html">Balance Sheet</a></li>
-                <li><a href="charts-gauge-sparkline.html">Profit and Loss</a></li>
+                <li><a href="/prices"></a></li>
+                <li><a href="/p-and-l">Profit and Loss</a></li>
             </ul>
         </li>
     </ul><span class="heading">Game World</span>

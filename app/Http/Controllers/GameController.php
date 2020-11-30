@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Game\Game;
+use App\Repositories\Promotion\Promotion;
 use App\Services\ImportService;
 use Illuminate\Http\Request;
 use App\Contracts\PromotionRepository;
@@ -54,8 +55,9 @@ class GameController extends Controller
     {
         // Next Day
         $game = Game::find($id);
-        $game->game_date = $request->game_date;
-        $game->save();
+        $game->update($request->all());
+        $promotion = $game->promotion;
+        session(['game' => $game, 'promotion' => $promotion]);
         return redirect("/home");
     }
 
@@ -82,12 +84,14 @@ class GameController extends Controller
         if($request->has('game_id')){
             session(['game_id' => $request->game_id]);
             $game = Game::find($request->game_id);
-            session(['game' => $game]);
+            $promotion = $game->promotion;
+            session(['game' => $game, 'promotion' => $promotion]);
             return redirect('/home');
         }
 
-
         $id = Str::uuid();
+
+        session(['game_id' => $id]);
 
         if ($request->hasFile('promotions-file')) {
             $this->importService->importPromotions($request->file('promotions-file'), $id);
@@ -103,8 +107,9 @@ class GameController extends Controller
 
         $game = $this->repository->create( $request->except(['promotions-file' , 'wrestlers-file']));
 
-        session(['game_id' => $id]);
+
         session(['game' => $game]);
+
         return redirect('/home');
     }
 

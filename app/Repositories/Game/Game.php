@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Game;
 
+use App\Repositories\Promotion\Promotion;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\UserScope;
@@ -22,6 +23,11 @@ class Game extends Model
     public function getCarbonDateAttribute()
     {
         return Carbon::parse($this->game_date);
+    }
+
+    public function promotion()
+    {
+        return $this->belongsTo(Promotion::class);
     }
 
 }

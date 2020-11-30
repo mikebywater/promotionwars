@@ -26,10 +26,12 @@ class Wrestlers extends Migration
             $table->integer('promotion_id')->nullable();
             $table->uuid('game_id');
             $table->integer('age');
-            $table->text('bio');
+            $table->text('bio')->nullable();
             $table->string('style');
+            $table->string('finisher')->nullable();
+            $table->bigInteger('salary')->nullable();
             $table->string('weight');
-            $table->string('role');
+            $table->string('role')->nullable();
             $table->integer('manager_id')->nullable();
             $table->integer('partner_id')->nullable();
             $table->timestamps();

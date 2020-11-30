@@ -46,7 +46,6 @@ class ImportService
                     break;
                 case 238:
                     $i = 0;
-          //          $data['promotion_id'] = 1;
                     $data['game_id'] = $id;
                     $this->promotionRepository->create($data);
                     $data = [];
@@ -66,6 +65,10 @@ class ImportService
                 case 1:
                     $data['name'] = $line;
                     break;
+                case 3:
+                    $promotion = $this->promotionRepository->findByShortName(trim($line));
+                    $data['promotion_id'] = ($promotion ? $promotion->id : null) ;
+                    break;
                 case 6:
                     $data['draw'] = $line;
                     break;
@@ -75,8 +78,14 @@ class ImportService
                 case 8:
                     $data['bio'] = htmlentities($line);
                     break;
+                case 12:
+                    $data['salary'] = htmlentities($line); // monthly salary
+                    break;
                 case 15:
                     $data['disposition'] = $line;
+                    break;
+                case 16:
+                    $data['finisher'] = $line;
                     break;
                 case 22:
                     $data['condition'] = $line;
@@ -101,7 +110,6 @@ class ImportService
                     break;
                 case 31:
                     $i = 0;
-                    $data['promotion_id'] = 1;
                     $data['game_id'] = $id;
                     $data['role'] = 'Midcard';
                     $this->wrestlerRepository->create($data);
