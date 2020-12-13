@@ -12,17 +12,20 @@
                                 <th>Name</th>
                                 <th>Draw</th>
                                 <th>Ability</th>
-                                <th>Promotion</th>
+                                <th>Charisma</th>
+                                <th>Mic Skills</th>
+                                <th>Role</th>
                             </tr>
                             @foreach($wrestlers as $wrestler)
                                 <tr>
                                     <td><a href="/wrestlers/{{$wrestler->id}}">{{$wrestler->name}}</a></td>
-                                    <td>{{$wrestler->draw}}</td>
-                                    <td>{{$wrestler->ability}}</td>
-                                    <td><a href="/promotions/{{$wrestler->promotion->id ?? ""}}">{{$wrestler->promotion->name ?? ""}}</a></td>
+                                    <td class="{{($wrestler->draw < 65) ? 'text-danger' : ''}}  {{($wrestler->draw > 79) ? 'text-success' : 'text-warning'}}">{{$wrestler->draw}}</td>
+                                    <td class="{{($wrestler->ability < 65) ? 'text-danger' : ''}}  {{($wrestler->ability > 79) ? 'text-success' : 'text-warning'}}">{{$wrestler->ability}}</td>
+                                    <td class="{{($wrestler->charisma < 65) ? 'text-danger' : ''}}  {{($wrestler->charisma > 79) ? 'text-success' : 'text-warning'}}">{{$wrestler->charisma}}</td>
+                                    <td class="{{($wrestler->mic_skills < 65) ? 'text-danger' : ''}}  {{($wrestler->mic_skills > 79) ? 'text-success' : 'text-warning'}}">{{$wrestler->mic_skills}}</td>
+                                    <td>{{$wrestler->role}}</td>
                                 </tr>
                             @endforeach
-
                         </table>
                     </div>
                 </div>
