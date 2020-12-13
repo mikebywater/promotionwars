@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\PromotionRepository;
 use App\Repositories\Game\Game;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     /**
+     * @var PromotionRepository
+     */
+    private $promotionRepository;
+
+    /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param PromotionRepository $promotionRepository
      */
-    public function __construct()
+    public function __construct(PromotionRepository $promotionRepository)
     {
         $this->middleware('auth');
+        $this->promotionRepository = $promotionRepository;
     }
 
     /**
@@ -25,6 +32,12 @@ class HomeController extends Controller
     public function index()
     {
         $game = Game::find(session('game_id'));
-        return view('home')->with(['game' => $game]);
+        $promotions = $this->promotionRepository->all();
+        if($game->promotion){
+            return view('home.dashboard')->with(['game' => $game, 'promotions' => $promotions]);
+        }else{
+            return view('home.pick_promotion')->with(['game' => $game, 'promotions' => $promotions]);
+        }
+
     }
 }

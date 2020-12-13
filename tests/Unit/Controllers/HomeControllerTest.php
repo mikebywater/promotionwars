@@ -27,6 +27,6 @@ class HomeControllerTest extends TestCase
                         ->get('/home');
         
         $response->assertStatus(200);
-        $response->assertViewIs('home');
+        $response->assertViewIs('home.pick_promotion');
     }
 }

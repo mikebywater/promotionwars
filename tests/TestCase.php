@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
             'promoter_name' => 'Vince McMahon'
         ]);
 
-        session(['game_id' => $game->id]);
+        session(['game_id' => $game->id, 'game' => $game]);
         return $game->id;
     }
 }

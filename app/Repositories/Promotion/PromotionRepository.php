@@ -12,8 +12,8 @@ class PromotionRepository extends Repository implements PromotionRepositoryContr
         $this->model = new Promotion();
     }
 
-    public function findByName($name)
+    public function findByShortName($name)
     {
-        return $this->model->where("name"  , $name);
+        return $this->model->where('short_name' , $name)->first();
     }
 }
