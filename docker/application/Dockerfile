@@ -1,16 +1,14 @@
-FROM php:7.3.8-fpm-buster
+FROM php:8.2-fpm-bullseye
 
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 # PHP extensions
 RUN apt-get update && apt-get install -y libpq-dev libpng-dev git zip unzip libzip-dev \
-    && docker-php-ext-configure zip --with-libzip \
     && docker-php-ext-install pdo pdo_mysql bcmath pdo_pgsql gd zip
 
-RUN apt install -y libxml2-dev
+RUN apt-get install -y libxml2-dev
 RUN docker-php-ext-install xml
-RUN docker-php-ext-install xmlrpc
 RUN apt-get install -y graphviz
 
 
@@ -25,20 +23,16 @@ RUN apt-get install -y supervisor
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/var/www/docker/application/config/supervisord.conf"]
 
 
-RUN pecl install xdebug-2.7.1
+RUN pecl install xdebug-3.2.2
 RUN docker-php-ext-enable xdebug
 
 RUN docker-php-ext-install opcache
 
-ARG XDEBUG_REMOTE_ENABLE=0
-ARG XDEBUG_REMOTE_AUTOSTART=0
-ARG XDEBUG_PROFILER_ENABLE=0
+ARG XDEBUG_MODE=off
+ARG XDEBUG_START_WITH_REQUEST=no
 
-RUN if [ "${XDEBUG_REMOTE_ENABLE}" != "" ] ; then echo "xdebug.remote_enable=${XDEBUG_REMOTE_ENABLE}" >> $PHP_INI_DIR/php.ini; fi
-RUN if [ "${XDEBUG_REMOTE_AUTOSTART}" != "" ] ; then echo "xdebug.remote_autostart=${XDEBUG_REMOTE_AUTOSTART}" >> $PHP_INI_DIR/php.ini; fi
-RUN if [ "${XDEBUG_PROFILER_ENABLE}" != "" ] ; then echo "xdebug.profiler_enable=${XDEBUG_PROFILER_ENABLE}" >> $PHP_INI_DIR/php.ini; fi
-RUN if [ "${XDEBUG_REMOTE_ENABLE}" != "" ] ; then echo "xdebug.profiler_output_dir='storage/profiling'" >> $PHP_INI_DIR/php.ini; fi
+RUN if [ "${XDEBUG_MODE}" != "off" ] ; then echo "xdebug.mode=${XDEBUG_MODE}" >> $PHP_INI_DIR/php.ini; fi
+RUN if [ "${XDEBUG_START_WITH_REQUEST}" != "no" ] ; then echo "xdebug.start_with_request=${XDEBUG_START_WITH_REQUEST}" >> $PHP_INI_DIR/php.ini; fi
+RUN echo "xdebug.output_dir='storage/profiling'" >> $PHP_INI_DIR/php.ini
 
 WORKDIR /var/www
-
-USER ${USER_NAME}

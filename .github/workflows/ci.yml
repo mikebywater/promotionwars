@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: zip, pdo, pdo_mysql, pdo_sqlite, mbstring, xml, bcmath, curl, json
+          coverage: none
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Install Composer Dependencies
+        run: composer install -n --prefer-dist --no-interaction
+
+      - name: Install NPM Dependencies
+        run: npm ci
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Create SQLite database for testing
+        run: touch storage/testing.sqlite
+
+      - name: Run migrations
+        run: php artisan migrate --env=testing --database=sqlite_testing --force
+
+      - name: Clear and cache config
+        run: |
+          php artisan config:cache
+          php artisan config:clear
+
+      - name: Run tests
+        run: ./vendor/bin/phpunit
+
