@@ -1,7 +1,6 @@
-
-<div class="panel panel-default">
-    <div class="panel-heading">Biography</div>
-    <div class="panel-body">
-        {{$wrestler->bio}}
+<div class="block">
+    <div class="title"><strong>Biography</strong></div>
+    <div class="block-body">
+        <p>{{$wrestler->bio}}</p>
     </div>
 </div>

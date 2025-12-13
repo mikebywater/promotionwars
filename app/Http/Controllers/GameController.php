@@ -11,6 +11,7 @@ use App\Contracts\GameRepository;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class GameController extends Controller
 {
@@ -55,8 +56,38 @@ class GameController extends Controller
     {
         // Next Day
         $game = Game::find($id);
+        $oldDate = Carbon::parse($game->game_date);
+        
+        // Update the game date
         $game->update($request->all());
-        $promotion = $game->promotion;
+        
+        // Reload to get the new date
+        $game->refresh();
+        $newDate = Carbon::parse($game->game_date);
+        
+        // Check if the month has changed
+        if ($oldDate->month != $newDate->month || $oldDate->year != $newDate->year) {
+            // Month has changed - deduct salaries
+            $promotion = $game->promotion;
+            
+            if ($promotion) {
+                // Get all wrestlers for this promotion and sum their salaries
+                $totalSalaries = $promotion->wrestlers()
+                    ->whereNotNull('salary')
+                    ->sum('salary');
+                
+                // Subtract total salaries from promotion funds (can go negative)
+                $promotion->funds = $promotion->funds - $totalSalaries;
+                $promotion->save();
+                
+                // Reload promotion to get updated funds
+                $promotion->refresh();
+            }
+        } else {
+            // Just get the promotion without salary deduction
+            $promotion = $game->promotion;
+        }
+        
         session(['game' => $game, 'promotion' => $promotion]);
         return redirect("/home");
     }

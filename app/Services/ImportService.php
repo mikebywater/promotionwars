@@ -349,6 +349,26 @@ class ImportService
             // Line 9 (index 8): bio
             $data['bio'] = isset($lines[$i + 8]) ? htmlentities(trim($lines[$i + 8])) : '';
             
+            // Line 15 (index 14): role (0 = Jobber, 1 = Midcard, 2 = Upper Midcard, 3 = Main Event)
+            $roleValue = isset($lines[$i + 14]) ? (int)trim($lines[$i + 14]) : 1;
+            switch ($roleValue) {
+                case 0:
+                    $data['role'] = 'Jobber';
+                    break;
+                case 1:
+                    $data['role'] = 'Midcard';
+                    break;
+                case 2:
+                    $data['role'] = 'Upper Midcard';
+                    break;
+                case 3:
+                    $data['role'] = 'Main Event';
+                    break;
+                default:
+                    $data['role'] = 'Midcard';
+                    break;
+            }
+            
             // Line 16 (index 15): disposition
             $data['disposition'] = isset($lines[$i + 15]) ? trim($lines[$i + 15]) : '';
             
@@ -376,9 +396,15 @@ class ImportService
             // Line 31 (index 30): charisma (was old line 30, shifted by 1)
             $data['charisma'] = isset($lines[$i + 30]) ? (int)trim($lines[$i + 30]) : 0;
             
+            // Calculate salary based on draw and charisma (new format doesn't include salary)
+            // Formula: (draw * 2000) + (charisma * 500)
+            // This gives reasonable salaries: main eventers get 200k-300k+, midcarders get 50k-150k
+            // Example: Hulk Hogan (draw: 97, charisma: 99) = 194,000 + 49,500 = 243,500/month
+            $draw = $data['draw'] ?? 0;
+            $charisma = $data['charisma'] ?? 0;
+            $data['salary'] = ($draw * 2000) + ($charisma * 500);
+            
             $data['game_id'] = $id;
-            $data['role'] = 'Midcard';
-            $data['salary'] = null; // Not in new format
             
             $this->wrestlerRepository->create($data);
         }
