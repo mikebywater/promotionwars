@@ -3,6 +3,9 @@ FROM php:8.2-fpm-bullseye
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
+# Copy custom PHP configuration for upload limits
+COPY docker/application/config/php-uploads.ini $PHP_INI_DIR/conf.d/uploads.ini
+
 # PHP extensions
 RUN apt-get update && apt-get install -y libpq-dev libpng-dev git zip unzip libzip-dev \
     && docker-php-ext-install pdo pdo_mysql bcmath pdo_pgsql gd zip

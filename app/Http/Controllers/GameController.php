@@ -93,19 +93,36 @@ class GameController extends Controller
 
         session(['game_id' => $id]);
 
-        if ($request->hasFile('promotions-file')) {
-            $this->importService->importPromotions($request->file('promotions-file'), $id);
-        }
+        // Check if data pack zip file is provided (new format)
+        if ($request->hasFile('data-pack-zip')) {
+            $zipFile = $request->file('data-pack-zip');
+            
+            // Validate it's a zip file
+            if ($zipFile->getClientOriginalExtension() !== 'zip' && $zipFile->getMimeType() !== 'application/zip') {
+                return redirect()->back()->withErrors(['data-pack-zip' => 'Please upload a valid zip file.']);
+            }
+            
+            try {
+                $this->importService->importDataPackFromZip($zipFile, $id);
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['data-pack-zip' => 'Error importing data pack: ' . $e->getMessage()]);
+            }
+        } else {
+            // Old format: individual files
+            if ($request->hasFile('promotions-file')) {
+                $this->importService->importPromotions($request->file('promotions-file'), $id);
+            }
 
-        if ($request->hasFile('wrestlers-file')) {
-            $this->importService->importWrestlers($request->file('wrestlers-file'), $id);
+            if ($request->hasFile('wrestlers-file')) {
+                $this->importService->importWrestlers($request->file('wrestlers-file'), $id);
+            }
         }
 
         $request->request->set('user_id', Auth::user()->id);
         $request->request->set('id', $id);
 
 
-        $game = $this->repository->create( $request->except(['promotions-file' , 'wrestlers-file']));
+        $game = $this->repository->create( $request->except(['promotions-file' , 'wrestlers-file', 'data-pack-zip']));
 
 
         session(['game' => $game]);
@@ -156,6 +173,72 @@ class GameController extends Controller
     public function destroy($id)
     {
 
+    }
+
+    /**
+     * Test method to import data pack
+     * 
+     * @param Request $request
+     * @return Response
+     */
+    public function testImportDataPack(Request $request)
+    {
+        $zipFile = $request->file('zip_file');
+        
+        if (!$zipFile) {
+            // Fallback to directory if provided
+            $directory = $request->input('directory', base_path('PW Archive (1992 - January)'));
+            
+            if (!is_dir($directory)) {
+                return response()->json(['error' => 'Please provide a zip file or valid directory path'], 400);
+            }
+
+            $id = Str::uuid();
+            
+            try {
+                $this->importService->importDataPack($directory, $id);
+                
+                $promotionsCount = $this->promotionRepository->all()->where('game_id', $id)->count();
+                $wrestlersCount = \App\Repositories\Wrestler\Wrestler::withoutGlobalScopes()
+                    ->where('game_id', $id)
+                    ->count();
+                
+                return response()->json([
+                    'success' => true,
+                    'game_id' => $id,
+                    'promotions_imported' => $promotionsCount,
+                    'wrestlers_imported' => $wrestlersCount,
+                ]);
+            } catch (\Exception $e) {
+                return response()->json([
+                    'error' => $e->getMessage(),
+                    'trace' => $e->getTraceAsString()
+                ], 500);
+            }
+        }
+
+        $id = Str::uuid();
+        
+        try {
+            $this->importService->importDataPackFromZip($zipFile, $id);
+            
+            $promotionsCount = $this->promotionRepository->all()->where('game_id', $id)->count();
+            $wrestlersCount = \App\Repositories\Wrestler\Wrestler::withoutGlobalScopes()
+                ->where('game_id', $id)
+                ->count();
+            
+            return response()->json([
+                'success' => true,
+                'game_id' => $id,
+                'promotions_imported' => $promotionsCount,
+                'wrestlers_imported' => $wrestlersCount,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ], 500);
+        }
     }
 
 }

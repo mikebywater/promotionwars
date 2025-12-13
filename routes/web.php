@@ -32,4 +32,7 @@ Route::middleware(['auth'])->group(function() {
 
         Route::get('/search', 'SearchController@index');
     });
+
+    // Test route for data pack import
+    Route::post('/games/test-import', 'GameController@testImportDataPack');
 });

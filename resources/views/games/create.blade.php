@@ -11,13 +11,37 @@
 
                 <hr>
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form action="/games" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="promotions-file">Promoters File</label>
+                        <label for="data-pack-zip">Data Pack (ZIP File) - New Format</label>
+                        <input id="data-pack-zip" name="data-pack-zip" type="file" accept=".zip" class="form-control-file">
+                        <small class="form-text text-muted">Upload a zip file containing .fed files and wrestlers.pw1</small>
+                        @error('data-pack-zip')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+                    <div class="form-group">
+                        <hr>
+                        <p class="text-muted text-center">OR use old format:</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="promotions-file">Promoters File (Old Format)</label>
                         <input id="promotions-file" name="promotions-file" type="file">
                     </div>
                     <div class="form-group">
-                        <label for="wrestlers-file">Wrestlers File</label>
+                        <label for="wrestlers-file">Wrestlers File (Old Format)</label>
                         <input name="wrestlers-file" type="file">
                     </div>
                     @csrf
