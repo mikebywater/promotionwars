@@ -13,3 +13,6 @@ yarn-error.log
 .vscode
 supervisord.*
 .phpunit.result.cache
+
+# PW Archive data pack
+/PW Archive (1992 - January)/
